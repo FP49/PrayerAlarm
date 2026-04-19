@@ -8,7 +8,7 @@ No timetable images. No manual entry. Works for any city in the world.
 
 ## Download
 
-Go to the [Releases](https://github.com/FivePizza412079/NamaazAlarm/releases) page and download the latest `app-release.apk`.
+Go to the [Releases](https://github.com/FP49/NamaazAlarm/releases) page and download the latest `app-release.apk`.
 
 **Before installing:**
 
@@ -47,7 +47,7 @@ Prayer times are fetched from [Aladhan.com](https://aladhan.com) — a free Isla
 - Alarm plays your chosen audio for exactly 5 minutes; white noise fills any shortfall automatically
 
 **Reminders**
-- 30-minute and 10-minute pre-prayer notifications for Zuhr, Asr, Maghrib and Isha
+- 30 minute and 10 minute pre prayer notifications for Zuhr, Asr, Maghrib and Isha
 - Reminder notifications can be dismissed by swipe
 - Full alarm notification stays on screen until Stop is tapped
 
@@ -58,7 +58,7 @@ Prayer times are fetched from [Aladhan.com](https://aladhan.com) — a free Isla
 - Device city name via GPS
 
 **Audio**
-- Choose any audio file (adhan, nasheed) as the alarm sound
+- Choose any audio file (Azan) as the alarm sound
 - Option to use a separate audio file specifically for Fajr
 - App warns if file is under 5 minutes and fills remainder with white noise
 
@@ -146,8 +146,8 @@ The app guides you through both on first launch.
 ## Requirements
 
 - Android 5.0 (API 21) minimum
-- Tested on Samsung SM-T290 (Android 9)
-- Internet connection required once per month to fetch prayer times
+- Tested on Android 9
+- Internet connection required once/month to fetch prayer times
 - Location permission required for GPS-based time calculation
 
 ---
