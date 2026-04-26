@@ -25,7 +25,7 @@ import java.net.URL
  * Called from a coroutine on Dispatchers.IO — this is a blocking call.
  */
 class PrayerApiService {
-
+    var _hijriDateFromApi: String = ""
     companion object {
         private const val BASE_URL = "https://api.aladhan.com/v1"
         private const val TIMEOUT_MS = 15_000
@@ -33,6 +33,7 @@ class PrayerApiService {
 
     data class ApiResult(
         val days: List<DailyPrayers>,
+        val hijriDate: String = "",
         val error: String? = null
     ) {
         val success get() = error == null
@@ -128,6 +129,16 @@ class PrayerApiService {
             val date    = entry.getJSONObject("date")
             val greg    = date.getJSONObject("gregorian")
             val day     = greg.optString("day", "0").trim().toIntOrNull() ?: continue
+            // Store Hijri date from first day of the month
+            if (i == 0) {
+                val hijri      = date.getJSONObject("hijri")
+                val hijriDay   = hijri.optString("day", "").trim()
+                val hijriMonth = hijri.getJSONObject("month").optString("en", "").trim()
+                val hijriYear  = hijri.optString("year", "").trim()
+                if (hijriDay.isNotBlank() && hijriMonth.isNotBlank() && hijriYear.isNotBlank()) {
+                    _hijriDateFromApi = "$hijriDay $hijriMonth $hijriYear AH"
+                }
+            }
 
             val prayers = mutableMapOf<PrayerName, PrayerTime>()
 
@@ -143,9 +154,9 @@ class PrayerApiService {
         }
 
         return if (days.isEmpty())
-            ApiResult(emptyList(), "No prayer times found in the response.")
-        else
-            ApiResult(days)
+        ApiResult(emptyList(), "", "No prayer times found in the response.")
+    else
+        ApiResult(days, _hijriDateFromApi)
     }
 
     /**

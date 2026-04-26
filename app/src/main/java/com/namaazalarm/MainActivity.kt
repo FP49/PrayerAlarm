@@ -69,7 +69,9 @@ class MainActivity : AppCompatActivity() {
         KeepAliveWorker.schedule(this)
         checkBatteryDialogs()
 
-        binding.tvHijriDate.text = HijriHelper.getHijriDateString()
+        val storedHijri = prefs.getHijriDate()
+        binding.tvHijriDate.text = if (storedHijri.isNotBlank()) storedHijri
+                                   else HijriHelper.getHijriDateString()
         requestLocationDisplay()
         cleanupPreviousDayAlarms()
         refreshStatus()

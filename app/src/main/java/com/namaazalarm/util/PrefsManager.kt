@@ -67,6 +67,9 @@ class PrefsManager(context: Context) {
     fun setUserConfirmedSleepingApps(b: Boolean)  = prefs.edit().putBoolean(KEY_CONFIRMED_SLEEPING_APPS, b).apply()
     fun userConfirmedSleepingApps(): Boolean       = prefs.getBoolean(KEY_CONFIRMED_SLEEPING_APPS, false)
 
+    fun saveHijriDate(date: String) = prefs.edit().putString("hijri_date", date).apply()
+    fun getHijriDate(): String = prefs.getString("hijri_date", "") ?: ""
+
     companion object {
         private const val KEY_TIMETABLE              = "timetable_json"
         private const val KEY_ALARM_SOUND_PATH       = "alarm_sound_path"

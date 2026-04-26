@@ -181,6 +181,9 @@ class FetchTimetableActivity : AppCompatActivity() {
                     days       = result.days
                 )
             )
+            if (result.hijriDate.isNotBlank()) {
+                prefs.saveHijriDate(result.hijriDate)
+            }
 
             setStatus("${result.days.size} days loaded for ${monthName(month)} $year.")
             Toast.makeText(
@@ -198,6 +201,7 @@ class FetchTimetableActivity : AppCompatActivity() {
             finish()
         }
     }
+
 
     // ─────────────────────────────────────────────────────────────
     // UI helpers
