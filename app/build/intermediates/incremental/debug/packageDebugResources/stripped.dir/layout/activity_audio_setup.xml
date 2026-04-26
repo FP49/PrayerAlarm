@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/bg_dark">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alarm Sound"
+        android:textColor="@color/gold"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The alarm will play for exactly 5 minutes. If your audio file is shorter, the app fills the remainder with white noise automatically."
+        android:textColor="@color/text_label"
+        android:textSize="13sp"
+        android:lineSpacingExtra="4dp"
+        android:paddingBottom="24dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/card_bg"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:id="@+id/tvAudioStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:text="Loading..."/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSelectAudio"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="Select Audio File"
+        android:textSize="15sp"
+        android:backgroundTint="@color/gold"
+        android:textColor="@color/bg_dark"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnClearAudio"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="Remove Custom Sound"
+        android:textSize="15sp"
+        android:backgroundTint="@color/red_cancel"
+        android:textColor="@color/white"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="Back"
+        android:textSize="15sp"
+        android:backgroundTint="@color/navy"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

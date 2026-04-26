@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#111827</color>
+    <color name="card_bg">#1E2A3B</color>
+    <color name="card_border">#2D3F57</color>
+    <color name="gold">#C9A84C</color>
+    <color name="gold_dark">#9B7D2E</color>
+    <color name="green_confirm">#15803D</color>
+    <color name="navy">#1E3A5F</color>
+    <color name="red_cancel">#B91C1C</color>
+    <color name="text_label">#94A3B8</color>
+    <color name="today_bg">#2C3E5C</color>
+    <color name="today_border">#C9A84C</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">Namaaz Alarm</string>
+    <string name="audio_settings">Alarm Sound Settings</string>
+    <string name="cancel_alarms">Cancel All</string>
+    <string name="set_alarms">Set All Alarms</string>
+    <string name="upload_timetable">Upload Timetable</string>
+    <string name="view_alarms">View Prayer Times</string>
+    <style name="Theme.NamaazAlarm" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/gold</item>
+        <item name="colorPrimaryVariant">@color/gold_dark</item>
+        <item name="colorOnPrimary">@color/bg_dark</item>
+        <item name="colorSecondary">@color/gold</item>
+        <item name="colorOnSecondary">@color/bg_dark</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:statusBarColor">@color/navy</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+    </style>
+</resources>

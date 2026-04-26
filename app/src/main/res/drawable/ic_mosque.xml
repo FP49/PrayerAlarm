@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Simplified mosque silhouette -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,2 C11,2 10,3 10,4 L10,5 L2,5 L2,20 L22,20 L22,5 L14,5 L14,4 C14,3 13,2 12,2 Z
+                          M4,7 L8,7 L8,18 L4,18 Z
+                          M10,7 L14,7 L14,18 L10,18 Z
+                          M16,7 L20,7 L20,18 L16,18 Z
+                          M11,9 L13,9 L13,12 L11,12 Z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,1 L11.5,3 L12.5,3 Z"/>
+</vector>

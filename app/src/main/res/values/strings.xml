@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Namaaz Alarm</string>
+    <string name="upload_timetable">Upload Timetable</string>
+    <string name="view_alarms">View Prayer Times</string>
+    <string name="audio_settings">Alarm Sound Settings</string>
+    <string name="set_alarms">Set All Alarms</string>
+    <string name="cancel_alarms">Cancel All</string>
+</resources>

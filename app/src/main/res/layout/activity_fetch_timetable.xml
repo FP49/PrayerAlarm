@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Location card -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YOUR LOCATION"
+            android:textColor="@color/text_label"
+            android:textSize="11sp"
+            android:letterSpacing="0.15"
+            android:paddingBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tvLocationName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detecting location..."
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tvCoords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/text_label"
+                android:textSize="12sp"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detecting your location..."
+                android:textColor="@color/text_label"
+                android:textSize="13sp"
+                android:lineSpacingExtra="3dp"/>
+        </LinearLayout>
+
+        <!-- Calculation method -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CALCULATION METHOD"
+            android:textColor="@color/text_label"
+            android:textSize="11sp"
+            android:letterSpacing="0.15"
+            android:paddingBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSelectedMethod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hanafi / Karachi"
+                        android:textColor="@color/gold"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvMethodDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="University of Islamic Sciences, Karachi"
+                        android:textColor="@color/text_label"
+                        android:textSize="12sp"
+                        android:paddingTop="2dp"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnChangeMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Change"
+                    android:textSize="13sp"
+                    android:backgroundTint="@color/navy"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Asr time uses Hanafi calculation for all methods."
+                android:textColor="@color/text_label"
+                android:textSize="12sp"
+                android:lineSpacingExtra="2dp"/>
+        </LinearLayout>
+
+        <!-- Fetch button -->
+        <Button
+            android:id="@+id/btnFetch"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Fetch Prayer Times"
+            android:textSize="16sp"
+            android:backgroundTint="@color/gold"
+            android:textColor="@color/bg_dark"/>
+
+    </LinearLayout>
+</ScrollView>

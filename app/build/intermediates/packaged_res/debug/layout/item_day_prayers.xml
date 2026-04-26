@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@color/card_bg">
+
+    <!-- Day number + short day name -->
+    <TextView
+        android:id="@+id/tvDay"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:minLines="1"/>
+
+    <!-- Fajr -->
+    <TextView
+        android:id="@+id/tvFajr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/gold"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:padding="4dp"
+        android:background="?attr/selectableItemBackground"/>
+
+    <!-- Zuhr -->
+    <TextView
+        android:id="@+id/tvZuhr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/gold"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:padding="4dp"
+        android:background="?attr/selectableItemBackground"/>
+
+    <!-- Asr -->
+    <TextView
+        android:id="@+id/tvAsr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/gold"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:padding="4dp"
+        android:background="?attr/selectableItemBackground"/>
+
+    <!-- Maghrib -->
+    <TextView
+        android:id="@+id/tvMaghrib"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/gold"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:padding="4dp"
+        android:background="?attr/selectableItemBackground"/>
+
+    <!-- Isha -->
+    <TextView
+        android:id="@+id/tvIsha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/gold"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:padding="4dp"
+        android:background="?attr/selectableItemBackground"/>
+
+</LinearLayout>

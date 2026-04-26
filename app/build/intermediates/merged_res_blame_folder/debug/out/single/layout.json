@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.namaazalarm.app-mergeDebugResources-3:/layout/activity_audio_setup.xml",
+        "source": "com.namaazalarm.app-main-6:/layout/activity_audio_setup.xml"
+    },
+    {
+        "merged": "com.namaazalarm.app-mergeDebugResources-3:/layout/activity_import_timetable.xml",
+        "source": "com.namaazalarm.app-main-6:/layout/activity_import_timetable.xml"
+    },
+    {
+        "merged": "com.namaazalarm.app-mergeDebugResources-3:/layout/activity_alarm_fullscreen.xml",
+        "source": "com.namaazalarm.app-main-6:/layout/activity_alarm_fullscreen.xml"
+    },
+    {
+        "merged": "com.namaazalarm.app-mergeDebugResources-3:/layout/item_day_prayers.xml",
+        "source": "com.namaazalarm.app-main-6:/layout/item_day_prayers.xml"
+    },
+    {
+        "merged": "com.namaazalarm.app-mergeDebugResources-3:/layout/activity_fetch_timetable.xml",
+        "source": "com.namaazalarm.app-main-6:/layout/activity_fetch_timetable.xml"
+    },
+    {
+        "merged": "com.namaazalarm.app-mergeDebugResources-3:/layout/dialog_edit_time.xml",
+        "source": "com.namaazalarm.app-main-6:/layout/dialog_edit_time.xml"
+    },
+    {
+        "merged": "com.namaazalarm.app-mergeDebugResources-3:/layout/activity_settings.xml",
+        "source": "com.namaazalarm.app-main-6:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.namaazalarm.app-mergeDebugResources-3:/layout/activity_alarm_preview.xml",
+        "source": "com.namaazalarm.app-main-6:/layout/activity_alarm_preview.xml"
+    },
+    {
+        "merged": "com.namaazalarm.app-mergeDebugResources-3:/layout/activity_main.xml",
+        "source": "com.namaazalarm.app-main-6:/layout/activity_main.xml"
+    }
+]

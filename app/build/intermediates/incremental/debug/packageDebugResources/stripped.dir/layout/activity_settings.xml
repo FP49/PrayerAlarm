@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Section: Display -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DISPLAY"
+            android:textColor="@color/text_label"
+            android:textSize="11sp"
+            android:letterSpacing="0.15"
+            android:paddingBottom="10dp"/>
+
+        <!-- 12/24 hour toggle -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="24-Hour Time Format"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Off: 5:25 AM   On: 05:25"
+                        android:textColor="@color/text_label"
+                        android:textSize="12sp"
+                        android:paddingTop="2dp"/>
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch24Hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Section: Fajr Azaan -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FAJR AZAAN"
+            android:textColor="@color/text_label"
+            android:textSize="11sp"
+            android:letterSpacing="0.15"
+            android:paddingBottom="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Use a separate audio file for Fajr prayer instead of the main alarm sound."
+            android:textColor="@color/text_label"
+            android:textSize="13sp"
+            android:lineSpacingExtra="3dp"
+            android:paddingBottom="10dp"/>
+
+        <!-- Fajr separate toggle -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/card_bg"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Separate Fajr Azaan"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchFajrSeparate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Fajr sound section -->
+        <LinearLayout
+            android:id="@+id/layoutFajrSound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/card_bg"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:id="@+id/tvFajrSoundStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="No Fajr sound selected."/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSelectFajrAudio"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Select Fajr Audio File"
+                android:textSize="15sp"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/bg_dark"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnClearFajrAudio"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Remove Fajr Sound"
+                android:textSize="15sp"
+                android:backgroundTint="@color/red_cancel"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Back"
+            android:textSize="15sp"
+            android:backgroundTint="@color/navy"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+</ScrollView>
