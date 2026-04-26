@@ -8,7 +8,7 @@ No timetable images. No manual entry. Works for any city in the world.
 
 ## Download
 
-Go to the [Releases](https://github.com/FP49/NamaazAlarm/releases) page and download the latest `app-release.apk`.
+Go to the [Releases](https://github.com/FivePizza412079/NamaazAlarm/releases) page and download the latest `app-release.apk`.
 
 **Before installing:**
 
@@ -47,7 +47,7 @@ Prayer times are fetched from [Aladhan.com](https://aladhan.com) — a free Isla
 - Alarm plays your chosen audio for exactly 5 minutes; white noise fills any shortfall automatically
 
 **Reminders**
-- 30 minute and 10 minute pre prayer notifications for Zuhr, Asr, Maghrib and Isha
+- 30-minute and 10-minute pre-prayer notifications for Zuhr, Asr, Maghrib and Isha
 - Reminder notifications can be dismissed by swipe
 - Full alarm notification stays on screen until Stop is tapped
 
@@ -58,7 +58,7 @@ Prayer times are fetched from [Aladhan.com](https://aladhan.com) — a free Isla
 - Device city name via GPS
 
 **Audio**
-- Choose any audio file (Azan) as the alarm sound
+- Choose any audio file (adhan, nasheed) as the alarm sound
 - Option to use a separate audio file specifically for Fajr
 - App warns if file is under 5 minutes and fills remainder with white noise
 
@@ -146,9 +146,79 @@ The app guides you through both on first launch.
 ## Requirements
 
 - Android 5.0 (API 21) minimum
-- Tested on Android 9
-- Internet connection required once/month to fetch prayer times
+- Tested on Samsung SM-T290 (Android 9)
+- Internet connection required once per month to fetch prayer times
 - Location permission required for GPS-based time calculation
+
+---
+
+## Building from Source
+
+**Requirements:**
+- Android Studio Ladybug or later
+- JDK 17
+- Android SDK 34
+
+**Build debug APK:**
+
+```bash
+git clone https://github.com/FivePizza412079/NamaazAlarm.git
+cd NamaazAlarm
+gradlew assembleDebug
+```
+
+**Output:**
+```
+app/build/outputs/apk/debug/app-debug.apk
+```
+
+**Install to tablet via WiFi:**
+```cmd
+ENABLE_WIFI_ADB.bat   (first time only, USB cable needed)
+INSTALL_WIFI.bat      (every subsequent install)
+```
+
+---
+
+## Project Structure
+
+```
+app/src/main/java/com/namaazalarm/
+├── MainActivity.kt                  Dashboard with countdown, today's times, Hijri date
+├── FetchTimetableActivity.kt        Fetches month from Aladhan API
+├── AlarmPreviewActivity.kt          Review and edit prayer times before setting alarms
+├── AlarmPreviewAdapter.kt           RecyclerView adapter for the prayer list
+├── AlarmFullScreenActivity.kt       Full-screen alarm shown over the lock screen
+├── AudioSetupActivity.kt            Alarm sound file selection
+├── SettingsActivity.kt              12/24h, calculation method, separate Fajr sound
+│
+├── api/
+│   ├── PrayerApiService.kt          Aladhan API HTTP client and JSON parser
+│   └── CalculationMethod.kt         Enum of supported calculation methods
+│
+├── alarm/
+│   ├── AlarmScheduler.kt            Schedules all alarms via AlarmManager
+│   ├── AlarmReceiver.kt             BroadcastReceiver — handles triggers, boot, cleanup
+│   └── AlarmService.kt              Foreground service that plays alarm audio
+│
+├── model/
+│   ├── PrayerName.kt                Enum: FAJR, ZUHR, ASR, MAGHRIB, ISHA
+│   ├── PrayerTime.kt                Hour/minute with toMillis helper
+│   └── Models.kt                    DailyPrayers, MonthlyTimetable data classes
+│
+├── util/
+│   ├── TimeFormatter.kt             12/24h display formatting
+│   ├── HijriHelper.kt               Islamic calendar date calculation
+│   ├── LocationHelper.kt            GPS coordinates and city name
+│   ├── BatteryHelper.kt             Samsung battery settings navigation
+│   └── PrefsManager.kt              SharedPreferences wrapper
+│
+├── view/
+│   └── PrayerCountdownView.kt       Custom circular countdown ring (Canvas)
+│
+└── worker/
+    └── KeepAliveWorker.kt           WorkManager 15-minute alarm reschedule job
+```
 
 ---
 
@@ -162,4 +232,4 @@ The app guides you through both on first launch.
 
 ## License
 
-Public repository. All rights reserved.
+Private repository. All rights reserved.
