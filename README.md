@@ -1,4 +1,4 @@
-# NamaazAlarm
+# PrayerAlarm
 
 A native Android prayer alarm app. Enter your location once; the app fetches accurate prayer times for your area for the entire month and schedules precise alarms for all five daily prayers automatically.
 
@@ -8,7 +8,7 @@ No timetable images. No manual entry. Works for any city in the world.
 
 ## Download
 
-Go to the [Releases](https://github.com/FivePizza412079/NamaazAlarm/releases) page and download the latest `app-release.apk`.
+Go to the [Releases](https://github.com/FivePizza412079/PrayerAlarm/releases) page and download the latest `app-release.apk`.
 
 **Before installing:**
 
@@ -78,15 +78,15 @@ Prayer times are fetched from [Aladhan.com](https://aladhan.com) — a free Isla
 
 ```
 1. Install the APK from the Releases page
-2. Open Namaaz Alarm
+2. Open Prayer Alarm
 3. Complete Step 1: Battery Optimisation dialog
    - Tap Go to Settings
    - Change dropdown to All apps
-   - Find Namaaz Alarm > Don't optimise
+   - Find Prayer Alarm > Don't optimise
    - Press Back
 4. Complete Step 2: Never Sleeping Apps dialog
    - Tap Open Samsung Battery Settings
-   - Battery > Never sleeping apps > + > Namaaz Alarm > Add
+   - Battery > Never sleeping apps > + > Prayer Alarm > Add
    - Come back and tap Done
 5. Tap Fetch Prayer Times
 6. Allow location permission when prompted
@@ -130,13 +130,13 @@ Samsung aggressively kills background processes. Two settings are required for r
 Settings > Apps > three dots (top right) > Special Access
 > Optimise battery usage
 > Change dropdown to All apps
-> Find Namaaz Alarm > Don't optimise
+> Find Prayer Alarm > Don't optimise
 ```
 
 **Setting 2 — Never Sleeping Apps**
 ```
 Settings > Device Care (or Battery and Device Care) > Battery
-> Never sleeping apps > + > find Namaaz Alarm > Add
+> Never sleeping apps > + > find Prayer Alarm > Add
 ```
 
 The app guides you through both on first launch.
