@@ -15,7 +15,6 @@ object BatteryHelper {
         return pm.isIgnoringBatteryOptimizations(context.packageName)
     }
 
-    /** Opens the standard Android battery optimization exemption screen */
     fun requestIgnoreBatteryOptimizations(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             context.startActivity(
@@ -27,34 +26,49 @@ object BatteryHelper {
     }
 
     /**
-     * Opens Samsung's "Never sleeping apps" screen directly.
-     * Tries three increasingly generic fallbacks if the specific screen is unavailable.
+     * Opens Samsung Never Auto Sleeping Apps screen.
+     * Tries multiple known deep-link variants across One UI versions.
+     * Samsung changed the Activity class name across One UI versions so
+     * we try each known variant in order, falling back to generic settings.
+     *
+     * One UI 3.x / 4.x: com.samsung.android.sm.battery.ui.BatteryActivity
+     * One UI 5.x / 6.x: com.samsung.android.sm.battery.ui.usage.SleepingAppsActivity
+     * One UI fallback:   com.samsung.android.lool/.settings.SABatteryActivity
      */
     fun openNeverSleepingApps(context: Context) {
-        // Attempt 1: Samsung Device Care > Battery > Never sleeping apps (direct)
-        val samsungDirect = Intent().apply {
-            setClassName(
-                "com.samsung.android.lool",
-                "com.samsung.android.sm.battery.ui.BatteryActivity"
-            )
-            putExtra("extra_show_never_sleeping", true)
-        }
-        // Attempt 2: Samsung Device Care battery main screen
-        val samsungBattery = Intent().apply {
-            setClassName(
-                "com.samsung.android.lool",
-                "com.samsung.android.sm.battery.ui.BatteryActivity"
-            )
-        }
-        // Attempt 3: Generic battery saver settings
-        val genericBattery = Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS)
-        // Attempt 4: App's own battery detail page
-        val appBatteryDetail = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-            data = Uri.parse("package:${context.packageName}")
-        }
+        val attempts = listOf(
+            // One UI 5 / 6 direct Never Auto Sleeping screen
+            Intent().apply {
+                setClassName(
+                    "com.samsung.android.lool",
+                    "com.samsung.android.sm.battery.ui.usage.SleepingAppsActivity"
+                )
+            },
+            // One UI 3 / 4 battery main
+            Intent().apply {
+                setClassName(
+                    "com.samsung.android.lool",
+                    "com.samsung.android.sm.battery.ui.BatteryActivity"
+                )
+            },
+            // Alternative Samsung package
+            Intent().apply {
+                setClassName(
+                    "com.samsung.android.sm",
+                    "com.samsung.android.sm.battery.ui.BatteryActivity"
+                )
+            },
+            // Generic Android battery saver settings
+            Intent(Settings.ACTION_BATTERY_SAVER_SETTINGS),
+            // Last resort: app detail page where user can manage battery manually
+            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                data = Uri.parse("package:${context.packageName}")
+            }
+        )
 
-        listOf(samsungDirect, samsungBattery, genericBattery, appBatteryDetail).forEach { intent ->
+        for (intent in attempts) {
             try {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(intent)
                 return
             } catch (e: Exception) {

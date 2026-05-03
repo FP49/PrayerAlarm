@@ -28,7 +28,7 @@ class FetchTimetableActivity : AppCompatActivity() {
 
     private var currentLat: Double = 0.0
     private var currentLon: Double = 0.0
-    private var locationReady = false
+    private var locationReady  = false
     private var selectedMethod = CalculationMethod.DEFAULT
 
     private val locationPermLauncher = registerForActivityResult(
@@ -37,10 +37,6 @@ class FetchTimetableActivity : AppCompatActivity() {
         if (results.values.any { it }) fetchLocation()
         else showLocationDenied()
     }
-
-    // ─────────────────────────────────────────────────────────────
-    // Lifecycle
-    // ─────────────────────────────────────────────────────────────
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,10 +54,6 @@ class FetchTimetableActivity : AppCompatActivity() {
 
         requestLocation()
     }
-
-    // ─────────────────────────────────────────────────────────────
-    // Location
-    // ─────────────────────────────────────────────────────────────
 
     private fun requestLocation() {
         val perms = arrayOf(
@@ -81,12 +73,11 @@ class FetchTimetableActivity : AppCompatActivity() {
         LocationHelper(this).getLocationCoords { lat, lon, cityName ->
             runOnUiThread {
                 if (lat == 0.0 && lon == 0.0) {
-                    showLocationDenied()
-                    return@runOnUiThread
+                    showLocationDenied(); return@runOnUiThread
                 }
-                currentLat     = lat
-                currentLon     = lon
-                locationReady  = true
+                currentLat    = lat
+                currentLon    = lon
+                locationReady = true
 
                 binding.progressBar.visibility = View.GONE
                 binding.tvLocationName.text    = cityName
@@ -99,28 +90,20 @@ class FetchTimetableActivity : AppCompatActivity() {
 
     private fun showLocationDenied() {
         binding.progressBar.visibility = View.GONE
-        setStatus("Location permission denied.\n\nPrayer times cannot be calculated without your location. Please grant location permission.")
+        setStatus("Location permission denied.\n\nPrayer times cannot be calculated without your location.")
         binding.btnFetch.isEnabled = false
-
         AlertDialog.Builder(this)
             .setTitle("Location Required")
-            .setMessage(
-                "This app needs your location to calculate accurate prayer times for your area.\n\n" +
-                "Tap 'Grant Permission' to allow location access."
-            )
+            .setMessage("This app needs your location to calculate accurate prayer times.\n\nTap 'Grant Permission' to allow location access.")
             .setPositiveButton("Grant Permission") { _, _ -> requestLocation() }
             .setNegativeButton("Cancel", null)
             .show()
     }
 
-    // ─────────────────────────────────────────────────────────────
-    // Calculation method picker
-    // ─────────────────────────────────────────────────────────────
-
     private fun showMethodPicker() {
-        val methods     = CalculationMethod.values()
-        val names       = methods.map { it.displayName }.toTypedArray()
-        val currentIdx  = methods.indexOfFirst { it.id == selectedMethod.id }.coerceAtLeast(0)
+        val methods    = CalculationMethod.values()
+        val names      = methods.map { it.displayName }.toTypedArray()
+        val currentIdx = methods.indexOfFirst { it.id == selectedMethod.id }.coerceAtLeast(0)
 
         AlertDialog.Builder(this)
             .setTitle("Calculation Method")
@@ -135,10 +118,6 @@ class FetchTimetableActivity : AppCompatActivity() {
             .show()
     }
 
-    // ─────────────────────────────────────────────────────────────
-    // Fetch
-    // ─────────────────────────────────────────────────────────────
-
     private fun onFetchTapped() {
         if (!locationReady) { requestLocation(); return }
 
@@ -147,8 +126,8 @@ class FetchTimetableActivity : AppCompatActivity() {
         val year  = cal.get(Calendar.YEAR)
 
         setStatus("Fetching prayer times for ${monthName(month)} $year...")
-        binding.progressBar.visibility = View.VISIBLE
-        binding.btnFetch.isEnabled     = false
+        binding.progressBar.visibility    = View.VISIBLE
+        binding.btnFetch.isEnabled        = false
         binding.btnChangeMethod.isEnabled = false
 
         lifecycleScope.launch {
@@ -172,7 +151,6 @@ class FetchTimetableActivity : AppCompatActivity() {
                 return@launch
             }
 
-            // Save timetable
             prefs.saveTimetable(
                 MonthlyTimetable(
                     month      = month,
@@ -181,18 +159,18 @@ class FetchTimetableActivity : AppCompatActivity() {
                     days       = result.days
                 )
             )
+
+            // Save Hijri date string (fallback) and full per-day map (for Maghrib-aware display)
             if (result.hijriDate.isNotBlank()) {
                 prefs.saveHijriDate(result.hijriDate)
             }
+            if (result.hijriDateMap.isNotEmpty()) {
+                prefs.saveHijriDateMap(result.hijriDateMap)
+            }
 
             setStatus("${result.days.size} days loaded for ${monthName(month)} $year.")
-            Toast.makeText(
-                this@FetchTimetableActivity,
-                "${result.days.size} days fetched successfully.",
-                Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(this@FetchTimetableActivity, "${result.days.size} days fetched successfully.", Toast.LENGTH_SHORT).show()
 
-            // Go to review screen
             startActivity(
                 android.content.Intent(this@FetchTimetableActivity, AlarmPreviewActivity::class.java).apply {
                     putExtra(AlarmPreviewActivity.EXTRA_FROM_UPLOAD, true)
@@ -202,12 +180,6 @@ class FetchTimetableActivity : AppCompatActivity() {
         }
     }
 
-
-    // ─────────────────────────────────────────────────────────────
-    // UI helpers
-    // ─────────────────────────────────────────────────────────────
-
     private fun setStatus(msg: String) { binding.tvStatus.text = msg }
-
-    private fun monthName(month: Int) = java.text.DateFormatSymbols().months[month - 1]
+    private fun monthName(month: Int)  = java.text.DateFormatSymbols().months[month - 1]
 }
